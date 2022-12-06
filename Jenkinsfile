@@ -18,7 +18,7 @@ pipeline {
             
             steps {
 
-                sh 'mvn verify package'
+                sh 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 && mvn verify package'
             }
         }
 
@@ -26,7 +26,7 @@ pipeline {
             
             steps {
                 
-                       sh 'mvn test'
+                       sh 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 && mvn test'
                    
                
             }
