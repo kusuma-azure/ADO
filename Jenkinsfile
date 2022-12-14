@@ -30,6 +30,8 @@ pipeline {
                    
                
             }
+            
+        }
          stage('sonarqube') {
             
             steps {
