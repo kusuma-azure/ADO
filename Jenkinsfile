@@ -30,6 +30,14 @@ pipeline {
                    
                
             }
+         stage('sonarqube') {
+            
+            steps {
+                
+                       sh 'export PATH=$PATH:/opt/sonar-scanner/bin && sonar-scanner'
+                   
+               
+            }
         }
     }
 }
