@@ -37,15 +37,7 @@ pipeline {
             }
             
         }
-        stage('sonarqube') {
-            
-            steps {
-                
-                       sh 'export PATH=$PATH:/opt/sonar-scanner/bin && sonar-scanner'
-                   
-               
-            }
-        }
+        
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
