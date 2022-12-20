@@ -42,9 +42,9 @@ pipeline {
             steps {
                 script {
                     
-                    filesByGlob = findFiles(glob: "target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar");
-                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                    artifactPath = filesByGlob[0].path;
+                    
+                    
+                    artifactPath = target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar;
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: de.martinspielmann.wicket, packaging: jar, version 1.0-SNAPSHOT";
