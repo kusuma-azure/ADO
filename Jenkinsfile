@@ -42,9 +42,7 @@ pipeline {
             steps {
                 script {
                     
-                    
-                    
-                    artifactPath = target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar;
+                    artifactPath = "target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar";
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: de.martinspielmann.wicket, packaging: jar, version 1.0-SNAPSHOT";
