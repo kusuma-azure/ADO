@@ -41,27 +41,27 @@ pipeline {
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
-                    pom = readMavenPom file: "pom.xml";
-                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    
+                    filesByGlob = findFiles(glob: "target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        echo "*** File: ${artifactPath}, group: de.martinspielmann.wicket, packaging: jar, version 1.0-SNAPSHOT";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
-                            groupId: pom.groupId,
-                            version: pom.version,
+                            groupId: de.martinspielmann.wicket,
+                            version: 1.0-SNAPSHOT,
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
-                                [artifactId: pom.artifactId,
+                                [artifactId: wicket-pwnedpasswords-validator,
                                 classifier: '',
                                 file: artifactPath,
-                                type: pom.packaging],
-                                [artifactId: pom.artifactId,
+                                type: jar],
+                                [artifactId: wicket-pwnedpasswords-validator,
                                 classifier: '',
                                 file: "pom.xml",
                                 type: "pom"]
